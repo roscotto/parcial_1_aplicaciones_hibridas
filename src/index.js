@@ -1,6 +1,6 @@
 import express from 'express'
-import proyectosRoutes from './routes/proyectosRoutes.js'
-import vistasProyectosRoutes from './routes/vistasProyectosRoutes.js'
+import proyectosRoutes from './routes/gamesRoutes.js'
+import vistasProyectosRoutes from './routes/viewsGamesRoutes.js'
 
 const app = express()
 
