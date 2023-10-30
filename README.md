@@ -1,80 +1,71 @@
-# Práctica para 1er parcial
+# Parcial 1
 ## Materia: Aplicaciones Híbridas
 ## Carrera: Diseño y Programación Web - Escuela Da Vinci
 
-### Parte #01
+### GOTO Game JAM - Sistema de Votación de Jueces
+### Contexto:
 
-Crear un sitio WEB en el puerto 2222 que contemple los siguientes puntos:
+GOTO Game JAM es una competencia anual donde equipos de desarrolladores se reúnen para crear un videojuego en un plazo de 48 horas. Como parte del proceso, un grupo de jueces evalúa y califica los videojuegos en varias categorías. Se te ha contratado para desarrollar el sistema de votación que permita a estos jueces emitir sus calificaciones.
 
--  Un menú de proyectos que contenga 5 secciones (”Mobile”, “LandingPage”, “Web App”, “e-Commerce”, “Games”)
-    -  Al hacer clic en una sección debe redireccionarlo a una pagina donde se vean solo los proyectos que pertenecen a esa sección.
-    -  Por cada proyecto se visualizarán los siguientes datos:
-        - Nombre del proyecto
-        - Descripción
-        - Tecnologías
-        - Link al repositorio
-        - Una imagen del proyecto (preview)
--  Los datos se deben obtener de una base de datos llamada **“AH20231CP1”** la cual tiene una colección llamada “**Projects”**
--  La estructura de cada documento es la siguiente:
+Las entidades ya establecidas son:
 
-```json
-{
-	"_id": ObjectID(),
-	"name": "Nombre del proyecto",
-	"description": "Descripcion del proyecto",
-	"link": "http://miweb.com/proyecto",
-	"img": "https://picsum.photos/400/225",
-	"technologies": ["PHP", "Vue", "Laravel"]
-	"section": "mobile"
-}
-```
+- **Judges** con campos:
+    - _id (identificador único)
+    - name
+- **Games** con campos:
+    - _id (identificador único)
+    - name
+    - genre (nombre del genero del juego)
+    - members (lista con los nombres de los participantes que hicieron el juego)
+    - edition (indica el año o edición de la GOTO Game JAM).
 
-### Parte #02
+Tu tarea es diseñar e implementar el sistema que permita registrar las votaciones de los jueces en las siguientes categorías:
 
-Crear un API que me permita hacer lo siguiente:
+1. Jugabilidad
+2. Arte
+3. Sonido
+4. Afinidad a la temática
 
--  Traer todos los proyectos
-    - Me debe permitir filtrar por tecnología y sección
--  Modificar un proyecto
--  Eliminar un proyecto
--  Crear un proyecto
+---
 
-### Parte #03
-
--  Agregar una nueva entidad llamada “Cliente” que contenga los siguientes datos:
-    - Nombre
-    - Foto
-    - Descripción
-- Modelar la base de datos para que soporte este nuevo cambio teniendo en cuenta las siguientes aclaraciones:
-    - Un cliente puede tener o no proyectos realizados para el.
-    - Un proyecto es creado para un cliente en particular.
-- Agregar una entrada al API para poder crear un cliente
-- Agregar una entrada al API para poder obtener todos los clientes
-- Agregar una entrada al API para poder obtener todos los proyectos que pertenecen a un cliente particular.
-
-## Aclaraciones:
-
-- Las secciones son:
+**Instrucciones**:
+1. **Modelo de Datos**:
     
+    La entidad de **Votes**. debe tener
     
-    | Seccion | Slug |
-    | --- | --- |
-    | Mobile | mobile |
-    | LandingPage | landing |
-    | Web App | webapp |
-    | e-Commerce | ecommerce |
-    | Games | game |
-  
-- Pueden realizar todas las modificaciones necesarias en la base de datos para modelar los cambios.
-- Se deben asegurar que los campos enviados desde el cliente sean los que necesite el sistema.
-- Se evaluara:
-    - Modelado de base de datos
-    - API (manejo correcto de las 4 reglas basicas)
-    - División de Responsabilidades (manejo correcto de views, controllers, service, api y route)
-    - Correcto uso del Driver nativo de MongoDB
-    - Correcto uso de **ECMAScript** modules
-    - Correcta creación de paginas dinámicas
-    - Correcto uso de Express
-- Para las imágenes pueden utilizar https://picsum.photos que es un generador de imágenes aleatoria.
-- No es necesario que envíen la base de datos
-- El código debe estar en github (envian solo el link al repositorio) o compartido en google drive (por favor no comprimirlo)
+    - Un identificador único.
+    - Juez y Juego
+    - Puntos de cada categoría
+      
+2. **Acciones que debe permitir el API**:
+    - Un juez debe poder generar una votación a un juego.
+    - A partir del id de Juez debe poder obtener el nombre de los juegos y los puntos de cada categorías donde ese haya realizado alguna votación.
+    - A partir del id del juego, se debe poder visualizar los nombres de los jueces y los puntos de cada categoría que puso ese juez.
+    - A partir de la edicion, se debe poder obtener el listado de juegos ordenados de mayor a menor puntaje (el puntaje es calculado a partir de la suma de todos los puntos obtenidos de todas las categorías).
+        - Se debe poder filtrar por genero.
+    - A partir de un id de juego, calcule y devuelva el promedio de puntuaciones de ese juego específico en cada una de las categorías junto con todos los datos del juego.
+    - CRUD de los juegos.
+      
+3. **Consideraciones**:
+    - Un juez sólo puede emitir una votación por juego. Si intenta votar nuevamente por el mismo juego, le deberá informar que no se puede realizar dicha acción.
+    - Las puntuaciones deben estar entre 1 y 10.
+    - Deberá haber validaciones para asegurarse de que los jueces y juegos existan al registrar una votación.
+    - Puede modificar cualquier entidad para lograr el objetivo.
+    - Un juez puedo no votar un juego, pero si realiza la votación siempre es para cada una de las categorías.
+      
+4. **Que se evaluara**:
+    - Correcto uso de la división de responsabilidades (routes, controllers, services, etc).
+    - Correcto uso de los filtros de MongoDB.
+    - Correcto uso del **API del Driver Nativo** de MongoDB.
+    - Correcto uso de las reglas de un **API Rest** (URI, Estados, JSON, Verbos).
+    - Que no realicen acciones o tareas que no se piden en el enunciado.
+    - Uso correcto de las estrategias **Embebed** y **Reference** para realizar las relaciones entre las entidades en una base de datos no relacional.
+    - Correcto nombramiento de los endpoint para realizar las tareas solicitadas.
+    - Uso correcto del API de **Express JS.**
+    - Correcto uso de **ECMAScript** modules.
+    - Recuerden que hay cosas que las debe resolver la base de datos y otras que las debe resolver el servicio.
+    - Puedes adaptar las entidades a las necesidades de la solución planteada.
+
+---
+
+Concluye el desarrollo siguiendo buenas prácticas y asegurándote de que todas las funcionalidades trabajen de forma correcta y eficiente. ¡Buena suerte!
