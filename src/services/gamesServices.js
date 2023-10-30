@@ -7,6 +7,7 @@ const GamesCollection = db.collection("Games");
 
 
 
+
 /**
  * Se conecta a la base de datos y devuelve un array con todos los games
  * @returns {Promise<Array>}

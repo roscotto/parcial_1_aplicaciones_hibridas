@@ -1,31 +1,35 @@
 import express from 'express';
 import gamesControllers from '../controllers/gamesControllers.js';
+import votesRoutes from './votesRoutes.js';
 
 
 const route = express.Router();
 
 // endpoint para pedir todos los proyectos
-route.get('/proyectos', gamesControllers.allGames);
+route.get('/games', gamesControllers.allGames);
 
 
 // endpoint para pedir un proyecto por id
-route.get('/proyectos/:id', gamesControllers.gameById);
+route.get('/games/:id', gamesControllers.gameById);
 
 
-// endpoint para pedir proyectos filtrados por seccion
-route.get('/proyectos/seccion/:seccion', gamesControllers.gameByGenre);
+// endpoint para pedir games filtrados por genre
+route.get('/games/genre/:genre', gamesControllers.gameByGenre);
 
-// endpoint para pedir proyectos filtrando por tecnología
-route.get('/proyectos/tecnologia/:tecnologia', gamesControllers.gameByJudge);
+// endpoint para pedir games filtrando por judge
+route.get('/games/judge/:judge', gamesControllers.gameByJudge);
 
 // endpoint para crear un proyecto
-route.post('/proyectos', gamesControllers.addGame);
+route.post('/games', gamesControllers.addGame);
 
 // endpoint para eliminar un proyecto
-route.delete('/proyectos/:id', gamesControllers.deleteGame);
+route.delete('/games/:id', gamesControllers.deleteGame);
 
 // endpoint para editar un proyecto
-route.put('/proyectos/:id', gamesControllers.editGame);
+route.put('/games/:id', gamesControllers.editGame);
+
+// endpoint para pedir todos los votos que recibió un juego
+route.use('/games', votesRoutes);
 
 
 

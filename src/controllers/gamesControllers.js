@@ -81,12 +81,10 @@ function gameByJudge(req, res) {
 function addGame(req, res) {
     const datosgame = {
         "_id": new ObjectId(),
-        "section": req.body.section,
         "name": req.body.name,
-        "description": req.body.description,
-        "technologies": req.body.technologies,
-        "link": req.body.link,
-        "img": req.body.img
+        "genre": req.body.genre,
+        "members": req.body.members,
+        "edition": req.body.edition
     } 
     gamesServices.addGame({...datosgame})
         .then(function (game) {
