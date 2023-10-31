@@ -1,5 +1,6 @@
 import express from 'express';
-import judgesControllers from '../controllers/judgesControllers.js';
+//import judgesControllers from '../controllers/judgesControllers.js';
+import votesControllers from '../controllers/votesControllers.js';
 
 
 const route = express.Router();
@@ -8,8 +9,8 @@ const route = express.Router();
 // route.get('/judges', judgesControllers.allJudges);
 
 
-// // endpoint para pedir un juez por id
-// route.get('/judges/:id', judgesControllers.judgeById);
+// endpoint para pedir los votos de un juez
+route.get('/judges/:id/votes', votesControllers.votesByJudge);
 
 
 

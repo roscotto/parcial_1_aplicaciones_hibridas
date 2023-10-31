@@ -17,7 +17,7 @@ route.get('/games/:id', gamesControllers.gameById);
 route.get('/games/genre/:genre', gamesControllers.gameByGenre);
 
 // endpoint para pedir games filtrando por judge
-route.get('/games/judge/:judge', gamesControllers.gameByJudge);
+//route.get('/games/judge/:judge', gamesControllers.gameByJudge);
 
 // endpoint para crear un proyecto
 route.post('/games', gamesControllers.addGame);

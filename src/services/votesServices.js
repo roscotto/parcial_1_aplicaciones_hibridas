@@ -16,9 +16,33 @@ async function toVote(voteData){
     return VotesCollection.insertOne(voteData)
   }
 
+/**
+ * Se conecta a la base de datos y devuelve un array con todos los games
+ * @returns {Promise<Array>}
+ */
+async function allVotes(game_id) {
+    await client.connect()
+    return VotesCollection.find({game_id: game_id}).toArray()
+  }
+
+
+
+/**
+ * Método que devuelve los votos de un juez
+ */
+async function votesByJudge(judge_id){
+    await client.connect()
+    const votes = await VotesCollection.find({ judge_id: judge_id }).toArray()
+    return votes
+}
+
+
+
 
 export default {
-    toVote
+    toVote,
+    votesByJudge,
+    allVotes
 };
 
 
