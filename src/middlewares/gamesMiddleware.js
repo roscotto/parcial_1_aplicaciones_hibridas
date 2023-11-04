@@ -1,8 +1,7 @@
-import { toVoteCreateSchema } from "../schemas/votesSchema.js";
+import { addGameSchema } from "../schemas/gamesSchema.js"; 
 
-export const validateToVoteCreate = (req, res, next) => {
-    console.log(req.body);
-    toVoteCreateSchema.validate(req.body, { abortEarly: false, stripUnknown: true }) 
+export const validateAddGame = (req, res, next) => {
+    addGameSchema.validate(req.body, { abortEarly: false, stripUnknown: true }) 
         .then(async function (value) {
             req.body = value;
             next(); 
@@ -12,7 +11,5 @@ export const validateToVoteCreate = (req, res, next) => {
                 message: error.message
             });
     })
+
 }
-
-
-
