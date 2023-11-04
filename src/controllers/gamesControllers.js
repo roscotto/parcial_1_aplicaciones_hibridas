@@ -127,6 +127,17 @@ function editGame(req, res) {
 }
 
 
+/**
+ * Se conecta a la base de datos y chequea si existe un juego por id
+ * @param {string} id
+ * @returns {Promise<Object>}
+ */
+async function gameExists(id) {
+  const game = await gamesServices.gameExists(id)
+  return game
+}
+
+
 export default {
     allGames,
     gameById,
@@ -134,6 +145,7 @@ export default {
     // gameByJudge,
     addGame,
     deleteGame,
-    editGame
+    editGame,
+    gameExists,
    
 }

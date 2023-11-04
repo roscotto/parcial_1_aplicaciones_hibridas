@@ -78,6 +78,13 @@ async function editGame(id, gameData) {
 }
 
 
+async function gameExists(id) {
+  await client.connect()
+  return GamesCollection.findOne({_id: new ObjectId(id)})
+
+}
+
+
 
 export default {
   allGames,
@@ -86,6 +93,7 @@ export default {
   gameByJudge,
   addGame,
   deleteGame,
-  editGame
+  editGame,
+  gameExists
 }
 

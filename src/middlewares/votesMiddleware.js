@@ -1,5 +1,6 @@
 import { toVoteCreateSchema } from "../schemas/votesSchema.js";
 import judgesControllers from "../controllers/judgesControllers.js";
+import gamesControllers from "../controllers/gamesControllers.js";
 
 export const validateToVoteCreate = (req, res, next) => {
     console.log(req.body);
@@ -37,4 +38,26 @@ export async function validateJudgeAlreadyExist(req, res, next) {
     }
 }
 
+
+export async function validateGameAlreadyExist(req, res, next) {
+    try {
+        console.log(req.body.game_id)
+        const game = await gamesControllers.gameExists(req.body.game_id);
+        
+        if (game) {
+            console.log("El juego ya existe")
+            next();
+        } else {
+            console.log("El juego no existe en la BD")
+            res.status(400).json({
+                message: "El juego no existe en la BD"
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+    });
+
+    }
+}
 
