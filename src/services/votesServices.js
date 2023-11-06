@@ -18,6 +18,7 @@ async function toVote(voteData){
 
 /**
  * Se conecta a la base de datos y devuelve un array con todos los games
+ * @param {*} req
  * @returns {Promise<Array>}
  */
 async function allVotes(game_id) {
@@ -29,6 +30,8 @@ async function allVotes(game_id) {
 
 /**
  * Método que devuelve los votos de un juez
+ * @param {*} req 
+ * @returns {Promise<Array>}
  */
 async function votesByJudge(judge_id){
     await client.connect()
@@ -37,12 +40,23 @@ async function votesByJudge(judge_id){
 }
 
 
+/**
+ * Método que devuelve los votos de un juego
+ * @param {*} req
+ * @returns {Promise<Array>}
+ */
+async function votesByGame(game_id){
+  await client.connect()
+  const votes = await VotesCollection.find({game_id: game_id }).toArray()
+  return votes
+}
 
 
 export default {
     toVote,
     votesByJudge,
-    allVotes
+    allVotes,
+    votesByGame
 };
 
 

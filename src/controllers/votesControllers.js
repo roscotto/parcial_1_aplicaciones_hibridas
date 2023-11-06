@@ -80,6 +80,25 @@ function votesByJudge(req, res) {
 
 
 /**
+ * Método que devuelve todos los votos filtrados por juego
+ * @param {*} req 
+ * @param {*} res
+ */
+function votesByGame(req, res) {
+    votesServices.votesByGame(req.params.id)
+      .then(function (votes) {
+        return res.status(200).json(votes);
+      })
+      .catch(function (error) {
+        return res.status(500).json({
+          message: error.message
+        });
+      });
+}
+
+
+
+/**
  * Método que devuelve todos los votos filtrados por juez
  * para luego chequear si el juez ya votó
  */
@@ -93,5 +112,6 @@ export default {
     toVote,
     votesByJudge,
     allVotes,
-    votesMade
+    votesMade,
+    votesByGame
 }

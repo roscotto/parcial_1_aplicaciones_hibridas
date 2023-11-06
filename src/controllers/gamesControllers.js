@@ -54,23 +54,6 @@ function gameByGenre(req, res) {
       });
 }
 
-// /**
-//  * Método que devuelve todos los games filtrados por tecnologia	
-//  * @param {*} req 
-//  * @param {*} res 
-//  */
-// function gameByJudge(req, res) {
-//     gamesServices.gameByJudge(req.params.judge)
-//       .then(function (game) {
-//         return res.status(200).json(game);
-//       })
-//       .catch(function (error) {
-//         return res.status(500).json({
-//           message: error.message
-//         });
-//       });
-// }
-
 
 /**
  * Método que crea un game
@@ -95,6 +78,7 @@ function addGame(req, res) {
             });
         });
 }
+
 
 /**
  * Método que elimina un game

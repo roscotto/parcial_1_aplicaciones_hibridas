@@ -40,15 +40,15 @@ async function gameByGenre(genre) {
  
 }
 
-/**
- * Se conecta a la base de datos y devuelve todos los games filtrados por tecnolo
- * @param {string} judge
- * @returns {Promise<Array>}
- */
-async function gameByJudge(judge) {
-  await client.connect()
-  return GamesCollection.find({ judge: { $in: [judge] } }).toArray()
-}
+// /**
+//  * Se conecta a la base de datos y devuelve todos los games filtrados por tecnolo
+//  * @param {string} judge
+//  * @returns {Promise<Array>}
+//  */
+// async function gameByJudge(judge) {
+//   await client.connect()
+//   return GamesCollection.find({ judge: { $in: [judge] } }).toArray()
+// }
 
 
 /**
@@ -90,7 +90,7 @@ export default {
   allGames,
   gameById,
   gameByGenre,
-  gameByJudge,
+  //gameByJudge,
   addGame,
   deleteGame,
   editGame,

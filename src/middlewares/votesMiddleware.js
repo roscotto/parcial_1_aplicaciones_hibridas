@@ -23,10 +23,10 @@ export async function validateJudgeAlreadyExist(req, res, next) {
         const judge = await judgesControllers.judgeExists(req.body.judge_id);
         
         if (judge) {
-            console.log("El juez ya existe")
+            //console.log("El juez ya existe")
             next();
         } else {
-            console.log("El juez no existe en la BD")
+            //console.log("El juez no existe en la BD")
             res.status(400).json({
                 message: "El juez no existe en la BD"
             });
@@ -46,10 +46,10 @@ export async function validateGameAlreadyExist(req, res, next) {
         const game = await gamesControllers.gameExists(req.body.game_id);
         
         if (game) {
-            console.log("El juego ya existe")
+            //console.log("El juego ya existe")
             next();
         } else {
-            console.log("El juego no existe en la BD")
+            //console.log("El juego no existe en la BD")
             res.status(400).json({
                 message: "El juego no existe en la BD"
             });
@@ -68,10 +68,10 @@ export async function validateGameVotedOnce(req, res, next) {
         const gameAlreadyVoted = votesMade.find(vote => vote.game_id == req.body.game_id)
 
         if(!gameAlreadyVoted) {
-            console.log("El juez no votó el juego")
+            //console.log("El juez no votó el juego")
             next();
         } else {
-            console.log("El juez ya votó por este juego")
+            //console.log("El juez ya votó por este juego")
             res.status(400).json({
                 message: "El juez ya votó por este juego"
             });
