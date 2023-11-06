@@ -14,9 +14,11 @@ route.get('/games', gamesControllers.allGames);
 // endpoint para pedir un juego por id
 route.get('/games/:id', gamesControllers.gameById);
 
-
 // endpoint para pedir juegos filtrados por género
 route.get('/games/genre/:genre', gamesControllers.gameByGenre);
+
+// endpoint para pedir juegos filtrados por año de edición 
+route.get('/games/edition/:edition', gamesControllers.gameByEdition);
 
 // endpoint para crear un juego
 route.post('/games',[ validateAddGame ] , gamesControllers.addGame);

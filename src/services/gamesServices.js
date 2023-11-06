@@ -20,7 +20,7 @@ async function allGames() {
 
 
 /**
- * Se conecta a la base de datos y devuelve un game por id
+ * Se conecta a la base de datos y devuelve un juegos por id
  * @param {string} id
  * @returns {Promise<Object>}
  */
@@ -30,7 +30,7 @@ async function gameById(id) {
 }
 
 /**
- * Se conecta a la base de datos y devuelve todos los games filtrados por genre
+ * Se conecta a la base de datos y devuelve todos los juegos filtrados por género
  * @param {string} genre
  * @returns {Promise<Array>}
  */
@@ -40,19 +40,21 @@ async function gameByGenre(genre) {
  
 }
 
-// /**
-//  * Se conecta a la base de datos y devuelve todos los games filtrados por tecnolo
-//  * @param {string} judge
-//  * @returns {Promise<Array>}
-//  */
-// async function gameByJudge(judge) {
-//   await client.connect()
-//   return GamesCollection.find({ judge: { $in: [judge] } }).toArray()
-// }
-
 
 /**
- * Método que crea un proyecto
+ * Se conecta a la base de datos y devuelve todos los juegos filtrados por año de edición
+ * @param {string} edition
+ * @returns {Promise<Array>}
+ */
+async function gameByEdition(edition) {
+  const editionYear = parseInt(edition)
+  await client.connect()
+  return GamesCollection.find({edition: editionYear}).toArray()
+ 
+}
+
+/**
+ * Método que crea un juego
  * @param {*} req
  * @param {*} res
  */
@@ -62,7 +64,7 @@ async function addGame(gameData){
 }
 
 /**
- * Se conecta a la base de datos y elimina un game determinado 
+ * Se conecta a la base de datos y elimina un juego determinado 
  * @param {string} id
  * @returns {Promise<Object>}
  */
@@ -94,6 +96,7 @@ export default {
   addGame,
   deleteGame,
   editGame,
-  gameExists
+  gameExists,
+  gameByEdition
 }
 

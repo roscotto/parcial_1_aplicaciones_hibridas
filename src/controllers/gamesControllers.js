@@ -38,7 +38,7 @@ function gameById(req, res) {
 }
 
 /**
- * Método que devuelve todos los games filtrados por género
+ * Método que devuelve todos los juegos filtrados por género
  * @param {*} req 
  * @param {*} res
  */
@@ -53,6 +53,34 @@ function gameByGenre(req, res) {
         });
       });
 }
+
+/**
+ * Método que devuelve todos los juegos filtrados por año de edición
+ * @param {*} req 
+ * @param {*} res
+ */
+function gameByEdition(req, res) {
+  gamesServices.gameByEdition(req.params.edition)
+    .then(function (game) {
+      return res.status(200).json(game);
+    })
+    .catch(function (error) {
+      return res.status(500).json({
+        message: error.message
+      });
+    });
+}
+
+
+
+// /**
+//  * Método que devuelve todos los juegos ordenados por puntaje de mayor a menor
+//  * @param {*} req 
+//  * @param {*} res
+//  */
+// async function gameByScore(req, res) {
+  
+// }
 
 
 /**
@@ -131,5 +159,7 @@ export default {
     deleteGame,
     editGame,
     gameExists,
+    gameByEdition,
+    //gameByScore
    
 }
