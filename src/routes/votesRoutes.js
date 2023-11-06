@@ -1,6 +1,6 @@
 import express from 'express';
 import votesControllers from '../controllers/votesControllers.js';
-import { validateToVoteCreate, validateJudgeAlreadyExist, validateGameAlreadyExist } from '../middlewares/votesMiddleware.js';
+import { validateToVoteCreate, validateJudgeAlreadyExist, validateGameAlreadyExist, validateGameVotedOnce } from '../middlewares/votesMiddleware.js';
 
 const route = express.Router();
 
@@ -11,7 +11,7 @@ const route = express.Router();
 route.get('/:id/votes', votesControllers.allVotes);
 
 // endpoint para emitir un voto nuevo (id del juego)
-route.post('/:id/votes', [validateToVoteCreate] , [validateJudgeAlreadyExist] , [validateGameAlreadyExist], votesControllers.toVote);
+route.post('/:id/votes', [validateToVoteCreate] , [validateJudgeAlreadyExist] , [validateGameAlreadyExist], [validateGameVotedOnce] , votesControllers.toVote);
 
 
 export default route

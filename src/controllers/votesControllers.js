@@ -79,10 +79,19 @@ function votesByJudge(req, res) {
 }
 
 
+/**
+ * Método que devuelve todos los votos filtrados por juez
+ * para luego chequear si el juez ya votó
+ */
+async function votesMade(id) {
+    return await votesServices.votesByJudge(id)
+}
+
+
 
 export default {
     toVote,
     votesByJudge,
-    allVotes
-
+    allVotes,
+    votesMade
 }
