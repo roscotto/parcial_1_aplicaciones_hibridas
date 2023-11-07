@@ -60,13 +60,15 @@ function gameByGenre(req, res) {
  * @param {*} req 
  * @param {*} res
  */
-function gameByEdition(req, res) {
+function gameByEditionOrderedByScore(req, res) {
   gamesServices.gameByEdition(req.params.edition)
     .then(function (game) {
-      return res.status(200).json(game);
+      const gamesOrderByScore = game.sort((a, b) => b.total_score - a.total_score)
+
+      res.status(200).json(gamesOrderByScore);
     })
     .catch(function (error) {
-      return res.status(500).json({
+      res.status(500).json({
         message: error.message
       });
     });
@@ -160,7 +162,7 @@ export default {
     deleteGame,
     editGame,
     gameExists,
-    gameByEdition,
+    gameByEditionOrderedByScore,
     editGameScore
    
 }
