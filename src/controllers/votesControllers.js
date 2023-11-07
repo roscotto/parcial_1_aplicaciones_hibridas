@@ -1,6 +1,7 @@
 import { array } from 'yup';
 import votesServices from '../services/votesServices.js'
 import gamesController from '../controllers/gamesControllers.js'
+import gamesServices from '../services/gamesServices.js'
 import { ObjectId } from 'mongodb';
 
 
@@ -54,7 +55,6 @@ function allVotes(req, res) {
 }
 
 
-
 /**
  * Método que devuelve todos los votos filtrados por juez
  * @param {*} req 
@@ -101,6 +101,62 @@ function votesByGame(req, res) {
 }
 
 
+/**
+ * Devuelve los promedios de los votos de un juego discriminado por cada categoría
+ */
+function votesAverageByGame(req, res) {
+    votesServices.votesByGame(req.params.id)
+      .then(function (votes) {
+        const jugabilidad = votes.map((vote) => vote.jugabilidad_score)
+        const arte = votes.map((vote) => vote.arte_score)
+        const sonido = votes.map((vote) => vote.sonido_score)
+        const afinidad = votes.map((vote) => vote.afinidad_score)
+
+        const jugabilidadAverage = jugabilidad.reduce((a, b) => a + b, 0) / jugabilidad.length
+        const arteAverage = arte.reduce((a, b) => a + b, 0) / arte.length
+        const sonidoAverage = sonido.reduce((a, b) => a + b, 0) / sonido.length
+        const afinidadAverage = afinidad.reduce((a, b) => a + b, 0) / afinidad.length
+
+        
+        gamesServices.gameById(req.params.id)
+        .then(function (game) {
+          const gameCompleteData = {
+            "game_name": game.name,
+            "genre": game.genre,
+            "members": game.members,
+            "edition": game.edition,
+          }
+          
+          const response = {
+            "game_id": req.params.id,
+            "game_name": gameCompleteData.game_name,
+            "genre": gameCompleteData.genre,
+            "members": gameCompleteData.members,
+            "edition": gameCompleteData.edition,
+            "jugabilidad_average": jugabilidadAverage,
+            "arte_average": arteAverage,
+            "sonido_average": sonidoAverage,
+            "afinidad_average": afinidadAverage
+        }
+
+        res.status(200).json(response);
+
+        })
+        .catch(function (error) {
+          res.status(500).json({
+            message: error.message
+          });
+        });
+                
+        
+      })
+      .catch(function (error) {
+        res.status(500).json({
+          message: error.message
+        });
+      });
+}
+
 
 /**
  * Método que devuelve todos los votos filtrados por juez
@@ -117,5 +173,6 @@ export default {
     votesByJudge,
     allVotes,
     votesMade,
-    votesByGame
+    votesByGame,
+    votesAverageByGame
 }

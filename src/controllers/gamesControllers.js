@@ -132,13 +132,10 @@ function editGame(req, res) {
 
 
 async function editGameScore(id, total_score) {
-  console.log("[controller]", id, total_score)
   const game = await gamesServices.gameById(id)
-  console.log("[controller]", game)
   const newData = {
     "total_score": game.total_score + total_score
   }
-  console.log("[controller]", newData)
   gamesServices.editGameScore(id, newData)  
 }
 
