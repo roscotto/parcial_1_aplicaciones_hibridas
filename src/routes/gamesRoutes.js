@@ -21,7 +21,7 @@ route.get('/games/genre/:genre', gamesControllers.gameByGenre);
 route.get('/games/edition/:edition', gamesControllers.gameByEdition);
 
 // endpoint para crear un juego
-route.post('/games',[ validateAddGame ] , gamesControllers.addGame);
+route.post('/games', gamesControllers.addGame);
 
 // endpoint para eliminar un juego
 route.delete('/games/:id', gamesControllers.deleteGame);

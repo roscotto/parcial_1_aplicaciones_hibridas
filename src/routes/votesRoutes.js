@@ -11,7 +11,7 @@ const route = express.Router();
 route.get('/:id/votes', votesControllers.allVotes);
 
 // endpoint para emitir un voto nuevo (id del juego)
-route.post('/:id/votes', [validateToVoteCreate] , [validateJudgeAlreadyExist] , [validateGameAlreadyExist], [validateGameVotedOnce] , votesControllers.toVote);
+route.post('/:id/to-vote', [validateToVoteCreate] , [validateJudgeAlreadyExist] , [validateGameAlreadyExist], [validateGameVotedOnce] , votesControllers.toVote);
 
 
 export default route

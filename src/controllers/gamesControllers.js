@@ -25,6 +25,7 @@ function allGames(req, res) {
  * @param {*} res 
  */
 function gameById(req, res) {
+  console.log("entro al controller")  
     gamesServices.gameById(req.params.id)
         .then(function (game) {
             return res.status(200).json(game);
@@ -72,17 +73,6 @@ function gameByEdition(req, res) {
 }
 
 
-
-// /**
-//  * Método que devuelve todos los juegos ordenados por puntaje de mayor a menor
-//  * @param {*} req 
-//  * @param {*} res
-//  */
-// async function gameByScore(req, res) {
-  
-// }
-
-
 /**
  * Método que crea un game
  * @param {*} req 
@@ -94,8 +84,10 @@ function addGame(req, res) {
         "name": req.body.name,
         "genre": req.body.genre,
         "members": req.body.members,
-        "edition": req.body.edition
+        "edition": req.body.edition,
+        "total_score": 0,
     } 
+    console.log('controlador', datosgame)
     gamesServices.addGame({...datosgame})
         .then(function (game) {
             return res.status(200).json(game);

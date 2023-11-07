@@ -3,91 +3,106 @@
         "name": "FIFA 23",
         "genre": "deportes",
         "members": ["Carlos Pérez", "Luis Rodríguez", "Ana Martínez"],
-        "edition": 2022
+        "edition": 2022,
+	      "total_score": 0
       },
       {
         "name": "Call of Duty: Vanguard",
         "genre": "shooter",
         "members": ["John Smith", "Emily Davis", "Michael Johnson"],
-        "edition": 2021
+        "edition": 2021,
+	      "total_score": 0
       },
       {
         "name": "The Legend of Zelda: Breath of the Wild",
         "genre": "aventura",
         "members": ["Elena García", "David López", "Pablo Ruiz"],
-        "edition": 2017
+        "edition": 2017,
+	      "total_score": 0
       },
       {
         "name": "Cyberpunk 2077",
         "genre": "rpg",
         "members": ["Marta Fernández", "Javier Sánchez", "Laura Pérez"],
-        "edition": 2020
+        "edition": 2020,
+	      "total_score": 0
       },
       {
         "name": "Assassin's Creed Valhalla",
         "genre": "aventura",
         "members": ["Diego Torres", "Sofía Romero", "Pedro González"],
-        "edition": 2020
+        "edition": 2020,
+	      "total_score": 0
       },
       {
         "name": "Minecraft",
         "genre": "sandbox",
         "members": ["Luisa Martínez", "Marcos Torres", "Carmen López"],
-        "edition": 2011
+        "edition": 2011,
+	      "total_score": 0
       },
       {
         "name": "Among Us",
         "genre": "Estrategia",
         "members": ["Sara Jiménez", "Andrés Pérez", "Isabel García"],
-        "edition": 2018
+        "edition": 2018,
+	      "total_score": 0
       },
       {
         "name": "Red Dead Redemption 2",
         "genre": "Acción",
         "members": ["Joaquín Rodríguez", "Santiago López", "Lucía Pérez"],
-        "edition": 2018
+        "edition": 2018,
+	      "total_score": 0
       },
       {
         "name": "Fortnite",
         "genre": "battle_royale",
         "members": ["Alicia Torres", "Hugo Martínez", "Daniel García"],
-        "edition": 2017
+        "edition": 2017,
+	      "total_score": 0
       },
       {
         "name": "Super Mario Odyssey",
         "genre": "plataformas",
         "members": ["María González", "Carlos Sánchez", "Alejandra Martínez"],
-        "edition": 2017
+        "edition": 2017,
+	      "total_score": 0
       },
       {
         "name": "Apex Legends",
         "genre": "battle_royale",
         "members": ["Antonio López", "Eva García", "Samuel Torres"],
-        "edition": 2019
+        "edition": 2019,
+	      "total_score": 0
       },
       {
         "name": "The Elder Scrolls V: Skyrim",
         "genre": "rpg",
         "members": ["Fernando Sánchez", "Lucas Pérez", "Celia Jiménez"],
-        "edition": 2011
+        "edition": 2011,
+	      "total_score": 0
       },
       {
         "name": "Overwatch",
         "genre": "shooter",
         "members": ["Roberto García", "Natalia Torres", "Víctor Martínez"],
-        "edition": 2016
+        "edition": 2016,
+	      "total_score": 0
       },
       {
         "name": "Resident Evil Village",
         "genre": "survival_horror",
         "members": ["Elena Rodríguez", "Juan López", "Sofía Sánchez"],
-        "edition": 2021
+        "edition": 2021,
+	      "total_score": 0
       },
       {
         "name": "Valorant",
         "genre": "shooter",
         "members": ["Luis Martínez", "Laura Sánchez", "Javier García"],
-        "edition": 2020
+        "edition": 2020,
+	      "total_score": 0
       }
     ]
   
