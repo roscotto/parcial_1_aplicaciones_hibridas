@@ -61,7 +61,7 @@ function gameByGenre(req, res) {
  * @param {*} res
  */
 function gameByEditionOrderedByScore(req, res) {
-  gamesServices.gameByEdition(req.params.edition)
+  gamesServices.gameByEditionAndGenre(req.params.edition, {"genre": req.query.genre})
     .then(function (game) {
       const gamesOrderByScore = game.sort((a, b) => b.total_score - a.total_score)
 
@@ -157,7 +157,6 @@ export default {
     allGames,
     gameById,
     gameByGenre,
-    // gameByJudge,
     addGame,
     deleteGame,
     editGame,

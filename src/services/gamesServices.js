@@ -41,15 +41,35 @@ async function gameByGenre(genre) {
 }
 
 
+// /**
+//  * Se conecta a la base de datos y devuelve todos los juegos filtrados por año de edición
+//  * @param {string} edition
+//  * @returns {Promise<Array>}
+//  */
+// async function gameByEdition(edition) {
+//   const editionYear = parseInt(edition)
+//   await client.connect()
+//   return GamesCollection.find({edition: editionYear}).toArray()
+ 
+// }
+
 /**
- * Se conecta a la base de datos y devuelve todos los juegos filtrados por año de edición
+ * Se conecta a la base de datos y devuelve todos los juegos filtrados por año de edición y género
  * @param {string} edition
+ * @param {string} genre
  * @returns {Promise<Array>}
  */
-async function gameByEdition(edition) {
-  const editionYear = parseInt(edition)
+async function gameByEditionAndGenre(edition, filter = {}) {
+  const filterToApply = {"edition": edition} 
+  filterToApply.edition = parseInt(edition)
+
+  if(filter?.genre) {
+    filterToApply.genre = filter.genre
+  }
+  
+
   await client.connect()
-  return GamesCollection.find({edition: editionYear}).toArray()
+  return GamesCollection.find(filterToApply).toArray()
  
 }
 
@@ -102,7 +122,8 @@ export default {
   deleteGame,
   editGame,
   gameExists,
-  gameByEdition,
+  //gameByEdition,
+  gameByEditionAndGenre,
   editGameScore
 }
 
