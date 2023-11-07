@@ -79,6 +79,11 @@ async function editGame(id, gameData) {
   return GamesCollection.updateOne({_id: new ObjectId(id)}, {$set: gameData})
 }
 
+async function editGameScore(id, gameData) {
+  await client.connect()
+  return GamesCollection.updateOne({_id: new ObjectId(id)}, {$set: gameData})
+}
+
 
 async function gameExists(id) {
   await client.connect()
@@ -97,6 +102,7 @@ export default {
   deleteGame,
   editGame,
   gameExists,
-  gameByEdition
+  gameByEdition,
+  editGameScore
 }
 

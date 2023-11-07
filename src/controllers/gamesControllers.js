@@ -25,7 +25,7 @@ function allGames(req, res) {
  * @param {*} res 
  */
 function gameById(req, res) {
-  console.log("entro al controller")  
+  //console.log("entro al controller")  
     gamesServices.gameById(req.params.id)
         .then(function (game) {
             return res.status(200).json(game);
@@ -131,6 +131,11 @@ function editGame(req, res) {
 }
 
 
+function editGameScore(id, newData) {
+  gamesServices.editGameScore(id, newData)  
+}
+
+
 /**
  * Se conecta a la base de datos y chequea si existe un juego por id
  * @param {string} id
@@ -152,6 +157,6 @@ export default {
     editGame,
     gameExists,
     gameByEdition,
-    //gameByScore
+    editGameScore
    
 }

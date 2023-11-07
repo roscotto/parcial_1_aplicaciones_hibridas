@@ -1,5 +1,6 @@
 import { array } from 'yup';
 import votesServices from '../services/votesServices.js'
+import gamesController from '../controllers/gamesControllers.js'
 import { ObjectId } from 'mongodb';
 
 
@@ -22,6 +23,15 @@ function toVote(req, res) {
     } 
     votesServices.toVote({...voteData})
         .then(function (vote) {
+          const total_score = voteData.jugabilidad_score + voteData.arte_score + voteData.sonido_score + voteData.afinidad_score;
+          console.log('game_id', voteData.game_id)
+          console.log('total_score',total_score)
+          
+          const gameNewData = {
+            "total_score": total_score
+          }
+          console.log('gameNewData',gameNewData)
+          gamesController.editGameScore(voteData.game_id, gameNewData)
             return res.status(200).json(vote);
         })
         .catch(function (error) {

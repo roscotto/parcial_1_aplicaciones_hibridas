@@ -4,7 +4,7 @@ import gamesControllers from "../controllers/gamesControllers.js";
 import votesControllers from "../controllers/votesControllers.js";
 
 export const validateToVoteCreate = (req, res, next) => {
-    console.log('validando voto');
+    //console.log('validando voto');
     toVoteCreateSchema.validate(req.body, { abortEarly: false, stripUnknown: true }) 
         .then(async function (value) {
             req.body = value;
@@ -19,7 +19,7 @@ export const validateToVoteCreate = (req, res, next) => {
 
 export async function validateJudgeAlreadyExist(req, res, next) {
     try {
-        console.log(req.body.judge_id)
+        //console.log(req.body.judge_id)
         const judge = await judgesControllers.judgeExists(req.body.judge_id);
         
         if (judge) {
@@ -42,7 +42,7 @@ export async function validateJudgeAlreadyExist(req, res, next) {
 
 export async function validateGameAlreadyExist(req, res, next) {
     try {
-        console.log(req.body.game_id)
+        //console.log(req.body.game_id)
         const game = await gamesControllers.gameExists(req.body.game_id);
         
         if (game) {
