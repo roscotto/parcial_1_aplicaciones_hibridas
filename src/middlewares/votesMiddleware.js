@@ -4,7 +4,7 @@ import gamesControllers from "../controllers/gamesControllers.js";
 import votesControllers from "../controllers/votesControllers.js";
 
 export const validateToVoteCreate = (req, res, next) => {
-    //console.log(req.body);
+    console.log('validando voto');
     toVoteCreateSchema.validate(req.body, { abortEarly: false, stripUnknown: true }) 
         .then(async function (value) {
             req.body = value;

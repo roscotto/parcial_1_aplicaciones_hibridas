@@ -8,10 +8,10 @@ const route = express.Router();
 // route.get('/:id/votes', votesControllers.toVote);
 
 // endpoint para pedir todos los votos de un juego
-route.get('/:id/votes', votesControllers.allVotes);
+route.get('/:id/votes', votesControllers.votesByGame);
 
 // endpoint para emitir un voto nuevo (id del juego)
-route.post('/:id/to-vote', [validateToVoteCreate] , [validateJudgeAlreadyExist] , [validateGameAlreadyExist], [validateGameVotedOnce] , votesControllers.toVote);
+route.post('/:id/votes', [validateToVoteCreate] , [validateJudgeAlreadyExist] , [validateGameAlreadyExist], [validateGameVotedOnce] , votesControllers.toVote);
 
 
 export default route

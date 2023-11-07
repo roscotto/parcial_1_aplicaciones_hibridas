@@ -87,7 +87,7 @@ function addGame(req, res) {
         "edition": req.body.edition,
         "total_score": 0,
     } 
-    console.log('controlador', datosgame)
+    
     gamesServices.addGame({...datosgame})
         .then(function (game) {
             return res.status(200).json(game);

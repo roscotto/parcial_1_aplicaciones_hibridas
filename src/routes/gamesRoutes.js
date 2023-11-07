@@ -30,7 +30,7 @@ route.delete('/games/:id', gamesControllers.deleteGame);
 route.put('/games/:id', gamesControllers.editGame);
 
 // endpoint para pedir todos los votos que recibió un juego
-route.use('/games/:id/votes', votesControllers.votesByGame);
+route.use('/games', votesRoutes);
 
 
 
