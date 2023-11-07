@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb';
 
 
 /**
- * Se conecta a la base de datos y chequea si existe un judge por id
+ * Se conecta a la base de datos y chequea si existe un juez por id
  * @param {string} id
  * @returns {Promise<Object>}
  */

@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb';
 
 
 /**
- * Método que devuelve todos los games
+ * Método que devuelve todos los juegos
  * @param {*} req 
  * @param {*} res 
  */
@@ -20,13 +20,12 @@ function allGames(req, res) {
 }
 
 /**
- * Método que devuelve un game por id
+ * Método que devuelve un juego por id
  * @param {*} req 
  * @param {*} res 
  */
 function gameById(req, res) {
-  //console.log("entro al controller")  
-    gamesServices.gameById(req.params.id)
+  gamesServices.gameById(req.params.id)
         .then(function (game) {
             return res.status(200).json(game);
         })
@@ -37,6 +36,7 @@ function gameById(req, res) {
         });
 
 }
+
 
 /**
  * Método que devuelve todos los juegos filtrados por género
@@ -55,8 +55,9 @@ function gameByGenre(req, res) {
       });
 }
 
+
 /**
- * Método que devuelve todos los juegos filtrados por año de edición
+ * Método que devuelve todos los juegos filtrados por año de edición y opcionalmente por género (query param)
  * @param {*} req 
  * @param {*} res
  */
@@ -76,7 +77,7 @@ function gameByEditionOrderedByScore(req, res) {
 
 
 /**
- * Método que crea un game
+ * Método que crea un juego
  * @param {*} req 
  * @param {*} res 
  */
@@ -103,7 +104,7 @@ function addGame(req, res) {
 
 
 /**
- * Método que elimina un game
+ * Método que elimina un juego
  * @param {*} req 
  * @param {*} res 
  */
@@ -120,6 +121,11 @@ function deleteGame(req, res) {
 }
 
 
+/**
+ * Método que edita un juego
+ * @param {*} req 
+ * @param {*} res 
+ */
 function editGame(req, res) {
    gamesServices.editGame(req.params.id, req.body)
     .then (function (game) {
@@ -133,6 +139,12 @@ function editGame(req, res) {
 }
 
 
+/**
+ * Método que edita el puntaje total de un juego determinado en la DB.
+ * Se ejecuta cuando se crea un voto
+ * @param {*} id 
+ * @param {*} total_score 
+ */
 async function editGameScore(id, total_score) {
   const game = await gamesServices.gameById(id)
   const newData = {

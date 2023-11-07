@@ -16,8 +16,9 @@ async function toVote(voteData){
     return VotesCollection.insertOne(voteData)
   }
 
+
 /**
- * Se conecta a la base de datos y devuelve un array con todos los games
+ * Se conecta a la base de datos y devuelve un array con todos los juegos
  * @param {*} req
  * @returns {Promise<Array>}
  */

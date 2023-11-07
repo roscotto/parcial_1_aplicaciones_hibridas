@@ -17,11 +17,17 @@ async function judgeById(id) {
   }
   
 
+/**
+ * Método que valida que el juez exista en la BD
+ * @param {*} id 
+ * @returns 
+ */
 async function judgeExists(id) {
     await client.connect()
     return JudgesCollection.findOne({_id: new ObjectId(id)})
 
 }
+
 
 export default {
     judgeById,

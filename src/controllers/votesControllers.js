@@ -103,6 +103,8 @@ function votesByGame(req, res) {
 
 /**
  * Devuelve los promedios de los votos de un juego discriminado por cada categoría
+ * @param {*} req
+ * @param {*} res
  */
 function votesAverageByGame(req, res) {
     votesServices.votesByGame(req.params.id)

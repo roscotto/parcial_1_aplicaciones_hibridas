@@ -41,18 +41,6 @@ async function gameByGenre(genre) {
 }
 
 
-// /**
-//  * Se conecta a la base de datos y devuelve todos los juegos filtrados por año de edición
-//  * @param {string} edition
-//  * @returns {Promise<Array>}
-//  */
-// async function gameByEdition(edition) {
-//   const editionYear = parseInt(edition)
-//   await client.connect()
-//   return GamesCollection.find({edition: editionYear}).toArray()
- 
-// }
-
 /**
  * Se conecta a la base de datos y devuelve todos los juegos filtrados por año de edición y género
  * @param {string} edition
