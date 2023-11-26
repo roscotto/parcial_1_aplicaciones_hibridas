@@ -3,8 +3,8 @@ import gamesRoutes from './routes/gamesRoutes.js'
 import judgesRoutes from './routes/judgesRoutes.js'
 import cors from 'cors'
 
-app.use(cors()) // permite que cualquier persona se conecte a mi api
 const app = express()
+app.use(cors()) // permite que cualquier persona se conecte a mi api
 
 app.use(express.json()) // interpreta el body cuando viene un json
 
